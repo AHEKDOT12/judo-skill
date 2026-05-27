@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Выдать достижение — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="screen-header">
+    <div>
+      <p class="eyebrow">Выдача достижения</p>
+      <h1 class="screen-title">
+        {{ student.first_name }} {{ student.last_name }}
+      </h1>
+    </div>
+
+    <a
+      class="logout-link"
+      href="{% url 'dojo:coach_student_detail' student.id %}"
+    >
+      Назад
+    </a>
+  </section>
+
+  <section class="app-card">
+    {% if form.fields.achievement.queryset %}
+      <form method="post" class="app-form">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label
+            class="form-label"
+            for="{{ form.achievement.id_for_label }}"
+          >
+            {{ form.achievement.label }}
+          </label>
+
+          {{ form.achievement }}
+
+          {% for error in form.achievement.errors %}
+            <p class="form-error">
+              {{ error }}
+            </p>
+          {% endfor %}
+        </div>
+
+        <button class="app-button" type="submit">
+          Выдать достижение
+        </button>
+      </form>
+    {% else %}
+      <h2 class="section-title">Все достижения уже выданы</h2>
+      <p class="app-subtitle">
+        У этого ученика уже есть все доступные достижения.
+      </p>
+
+      <a
+        class="secondary-button"
+        href="{% url 'dojo:coach_student_detail' student.id %}"
+      >
+        Вернуться назад
+      </a>
+    {% endif %}
+  </section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Удалить начисление — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="screen-header">
+    <div>
+      <p class="eyebrow">Удаление начисления</p>
+      <h1 class="screen-title">
+        {{ student.first_name }} {{ student.last_name }}
+      </h1>
+    </div>
+
+    <a
+      class="logout-link"
+      href="{% url 'dojo:coach_student_detail' student.id %}"
+    >
+      Назад
+    </a>
+  </section>
+
+  <section class="app-card">
+    <h2 class="section-title">Точно удалить?</h2>
+
+    <p class="app-subtitle">
+      Это начисление будет удалено, а общее количество очков ученика
+      пересчитается автоматически.
+    </p>
+
+    <div class="delete-preview">
+      <p class="event-comment">
+        {{ point_event.comment }}
+      </p>
+
+      <p class="event-date">
+        {{ point_event.created_at|date:"d.m.Y H:i" }}
+      </p>
+
+      <span class="event-points">
+        {% if point_event.points > 0 %}
+          +{{ point_event.points }}
+        {% else %}
+          {{ point_event.points }}
+        {% endif %}
+      </span>
+    </div>
+
+    <form method="post" class="app-form">
+      {% csrf_token %}
+
+      <button class="danger-button" type="submit">
+        Удалить начисление
+      </button>
+
+      <a
+        class="secondary-button"
+        href="{% url 'dojo:coach_student_detail' student.id %}"
+      >
+        Отмена
+      </a>
+    </form>
+  </section>
+{% endblock %}

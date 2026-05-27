@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Сменить аватар — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="screen-header">
+    <div>
+      <p class="eyebrow">Аватар</p>
+      <h1 class="screen-title">
+        Выбери свой символ
+      </h1>
+    </div>
+
+    <a
+      class="logout-link"
+      href="{% url 'dojo:student_my_profile' %}"
+    >
+      Назад
+    </a>
+  </section>
+
+  <section class="profile-avatar-card">
+    <div class="profile-avatar">
+      {{ student.avatar_emoji }}
+    </div>
+
+    <div>
+      <h2 class="profile-avatar-title">
+        Текущий аватар
+      </h2>
+      <p class="profile-avatar-subtitle">
+        {{ student.first_name }} {{ student.last_name }}
+      </p>
+    </div>
+  </section>
+
+  <section class="app-card">
+    <form method="post" class="app-form">
+      {% csrf_token %}
+
+      <div class="avatar-choice-grid">
+        {% for radio in form.avatar_emoji %}
+          <label class="avatar-choice">
+            {{ radio.tag }}
+            <span class="avatar-choice-emoji">
+              {{ radio.choice_label|slice:":2" }}
+            </span>
+            <span class="avatar-choice-name">
+              {{ radio.choice_label|slice:"2:" }}
+            </span>
+          </label>
+        {% endfor %}
+      </div>
+
+      {% for error in form.avatar_emoji.errors %}
+        <p class="form-error">
+          {{ error }}
+        </p>
+      {% endfor %}
+
+      <button class="app-button" type="submit">
+        Сохранить аватар
+      </button>
+    </form>
+  </section>
+{% endblock %}

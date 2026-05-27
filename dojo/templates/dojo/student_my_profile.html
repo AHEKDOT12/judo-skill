@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Мой прогресс — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="screen-header">
+    <div>
+      <p class="eyebrow">Ученик</p>
+      <h1 class="screen-title">
+        {{ student.first_name }} {{ student.last_name }}
+      </h1>
+    </div>
+
+    <a class="logout-link" href="{% url 'accounts:logout' %}">
+      Выйти
+    </a>
+  </section>
+
+  <section class="profile-avatar-card">
+    <div class="profile-avatar">
+      {{ student.avatar_emoji }}
+    </div>
+
+    <div>
+      <h2 class="profile-avatar-title">
+        {{ student.first_name }} {{ student.last_name }}
+      </h2>
+      <p class="profile-avatar-subtitle">
+        {{ student.group.name }}
+      </p>
+
+      <a
+        class="small-action-link"
+        href="{% url 'dojo:student_avatar_update' %}"
+      >
+        Сменить аватар
+      </a>
+    </div>
+  </section>
+
+  <section class="rank-card">
+    <p class="rank-label">Текущий ранг</p>
+    <h2 class="rank-title">{{ rank_info.name }}</h2>
+    <p class="rank-points">
+      {{ student.total_points }} очков
+    </p>
+
+    <div class="progress">
+      <div
+        class="progress-fill"
+        style="width: {{ rank_info.progress_percent }}%;"
+      ></div>
+    </div>
+
+    {% if rank_info.next_rank %}
+      <p class="small-text">
+        До ранга {{ rank_info.next_rank }}:
+        {{ rank_info.points_to_next }} очков
+      </p>
+    {% else %}
+      <p class="small-text">
+        Максимальный ранг достигнут.
+      </p>
+    {% endif %}
+  </section>
+
+  <section class="info-grid">
+    <article class="mini-card">
+      <p class="mini-label">Группа</p>
+      <h3 class="mini-value">
+        {{ student.group.name }}
+      </h3>
+    </article>
+
+    <article class="mini-card">
+      <p class="mini-label">Место</p>
+      <h3 class="mini-value">
+        #{{ place }}
+      </h3>
+    </article>
+
+    <article class="mini-card">
+      <p class="mini-label">Пояс</p>
+      <h3 class="mini-value">
+        {{ student.get_belt_display }}
+      </h3>
+    </article>
+
+    <article class="mini-card">
+      <p class="mini-label">Возраст</p>
+      <h3 class="mini-value">
+        {{ student.age }}
+      </h3>
+    </article>
+  </section>
+
+  <section class="app-card content-section">
+    <h2 class="section-title">Достижения</h2>
+
+    <div class="achievement-list">
+      {% for student_achievement in achievements %}
+        <div class="achievement-item">
+          <span class="achievement-icon">
+            {{ student_achievement.achievement.icon|default:"🏅" }}
+          </span>
+
+          <div>
+            <h3 class="achievement-title">
+              {{ student_achievement.achievement.title }}
+            </h3>
+            <p class="achievement-description">
+              {{ student_achievement.achievement.description }}
+            </p>
+          </div>
+        </div>
+      {% empty %}
+        <p class="empty-text">
+          Достижений пока нет.
+        </p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="app-card content-section">
+    <h2 class="section-title">Последние 20 начислений</h2>
+
+    <div class="event-list">
+      {% for event in point_events %}
+        <div class="event-item">
+          <div>
+            <p class="event-comment">
+              {{ event.comment }}
+            </p>
+            <p class="event-date">
+              {{ event.created_at|date:"d.m.Y H:i" }}
+            </p>
+          </div>
+
+          <span class="event-points">
+            {% if event.points > 0 %}
+              +{{ event.points }}
+            {% else %}
+              {{ event.points }}
+            {% endif %}
+          </span>
+        </div>
+      {% empty %}
+        <p class="empty-text">
+          Начислений пока нет.
+        </p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="app-card content-section">
+    <h2 class="section-title">Рейтинг группы</h2>
+
+    <div class="rating-list">
+      {% for rating_student in rating %}
+        <div
+          class="rating-row {% if rating_student.id == student.id %}rating-row-active{% endif %}"
+        >
+          <span class="rating-position">
+            {{ forloop.counter }}
+          </span>
+          <span class="rating-name">
+            {{ rating_student.avatar_emoji }}
+            {{ rating_student.first_name }}
+            {{ rating_student.last_name }}
+          </span>
+          <span class="rating-points">
+            {{ rating_student.total_points }}
+          </span>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

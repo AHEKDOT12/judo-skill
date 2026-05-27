@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Удалить группу — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="screen-header">
+    <div>
+      <p class="eyebrow">Удаление группы</p>
+      <h1 class="screen-title">
+        {{ group.name }}
+      </h1>
+    </div>
+
+    <a
+      class="logout-link"
+      href="{% url 'dojo:coach_dashboard' %}"
+    >
+      Назад
+    </a>
+  </section>
+
+  <section class="app-card">
+    <h2 class="section-title">Точно удалить группу?</h2>
+
+    <p class="app-subtitle">
+      Вместе с группой удалятся все ученики этой группы, их начисления
+      и достижения. Это действие нельзя отменить.
+    </p>
+
+    <div class="delete-preview">
+      <p class="event-comment">
+        {{ group.name }}
+      </p>
+
+      <p class="event-date">
+        Учеников: {{ group.students.count }}
+      </p>
+    </div>
+
+    <form method="post" class="app-form">
+      {% csrf_token %}
+
+      <button class="danger-button" type="submit">
+        Удалить группу
+      </button>
+
+      <a
+        class="secondary-button"
+        href="{% url 'dojo:coach_dashboard' %}"
+      >
+        Отмена
+      </a>
+    </form>
+  </section>
+{% endblock %}

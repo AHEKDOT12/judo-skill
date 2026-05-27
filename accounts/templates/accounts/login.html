@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Вход — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="app-card">
+    <h1 class="app-title">Вход</h1>
+    <p class="app-subtitle">
+      Войди как тренер или ученик.
+    </p>
+
+    {% if messages %}
+      <div class="message-list">
+        {% for message in messages %}
+          <p class="message message-{{ message.tags }}">
+            {{ message }}
+          </p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <form method="post" class="app-form">
+      {% csrf_token %}
+
+      <label class="form-label" for="username">
+        Логин
+      </label>
+      <input
+        class="form-input"
+        id="username"
+        type="text"
+        name="username"
+        required
+      >
+
+      <label class="form-label" for="password">
+        Пароль
+      </label>
+      <input
+        class="form-input"
+        id="password"
+        type="password"
+        name="password"
+        required
+      >
+
+      <button class="app-button" type="submit">
+        Войти
+      </button>
+    </form>
+  </section>
+{% endblock %}

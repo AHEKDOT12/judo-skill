@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ page_title }} — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="screen-header">
+    <div>
+      <p class="eyebrow">{{ page_title }}</p>
+      <h1 class="screen-title">
+        {{ student.first_name }} {{ student.last_name }}
+      </h1>
+    </div>
+
+    <a
+      class="logout-link"
+      href="{% url 'dojo:coach_student_detail' student.id %}"
+    >
+      Назад
+    </a>
+  </section>
+
+  <section class="app-card">
+    <form method="post" class="app-form">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="message-list">
+          {% for error in form.non_field_errors %}
+            <p class="message message-error">
+              {{ error }}
+            </p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="form-group">
+        <label class="form-label" for="{{ form.points.id_for_label }}">
+          {{ form.points.label }}
+        </label>
+
+        {{ form.points }}
+
+        {% for error in form.points.errors %}
+          <p class="form-error">
+            {{ error }}
+          </p>
+        {% endfor %}
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="{{ form.comment.id_for_label }}">
+          {{ form.comment.label }}
+        </label>
+
+        {{ form.comment }}
+
+        {% for error in form.comment.errors %}
+          <p class="form-error">
+            {{ error }}
+          </p>
+        {% endfor %}
+      </div>
+
+      <button class="app-button" type="submit">
+        {{ button_text }}
+      </button>
+    </form>
+  </section>
+{% endblock %}

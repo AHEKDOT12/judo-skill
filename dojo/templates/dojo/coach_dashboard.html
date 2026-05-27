@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Панель тренера — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="screen-header">
+    <div>
+      <p class="eyebrow">Тренер</p>
+      <h1 class="screen-title">Мои группы</h1>
+    </div>
+
+    <a class="logout-link" href="{% url 'accounts:logout' %}">
+      Выйти
+    </a>
+  </section>
+
+  <section class="action-panel">
+    <a
+      class="app-button"
+      href="{% url 'dojo:group_create' %}"
+    >
+      Создать группу
+    </a>
+  </section>
+
+  <section class="card-list">
+    {% for group in groups %}
+      <article class="group-card group-card-manage">
+        <a
+          class="group-card-main"
+          href="{% url 'dojo:coach_group_detail' group.id %}"
+        >
+          <div>
+            <h2 class="group-title">
+              {{ group.name }}
+            </h2>
+            <p class="group-meta">
+              Учеников: {{ group.students.count }}
+            </p>
+          </div>
+
+          <span class="group-arrow">→</span>
+        </a>
+
+        <div class="group-actions">
+          <a href="{% url 'dojo:group_edit' group.id %}">
+            Редактировать
+          </a>
+          <a href="{% url 'dojo:group_delete' group.id %}">
+            Удалить
+          </a>
+        </div>
+      </article>
+    {% empty %}
+      <article class="app-card">
+        <h2 class="group-title">Групп пока нет</h2>
+        <p class="app-subtitle">
+          Создай первую группу, чтобы добавить учеников.
+        </p>
+      </article>
+    {% endfor %}
+  </section>
+{% endblock %}

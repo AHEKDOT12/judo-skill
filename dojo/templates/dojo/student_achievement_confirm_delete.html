@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Удалить достижение — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="screen-header">
+    <div>
+      <p class="eyebrow">Удаление достижения</p>
+      <h1 class="screen-title">
+        {{ student.first_name }} {{ student.last_name }}
+      </h1>
+    </div>
+
+    <a
+      class="logout-link"
+      href="{% url 'dojo:coach_student_detail' student.id %}"
+    >
+      Назад
+    </a>
+  </section>
+
+  <section class="app-card">
+    <h2 class="section-title">Точно удалить достижение?</h2>
+
+    <p class="app-subtitle">
+      Достижение исчезнет из профиля ученика.
+    </p>
+
+    <div class="achievement-item">
+      <span class="achievement-icon">
+        {{ student_achievement.achievement.icon|default:"🏅" }}
+      </span>
+
+      <div>
+        <h3 class="achievement-title">
+          {{ student_achievement.achievement.title }}
+        </h3>
+        <p class="achievement-description">
+          {{ student_achievement.achievement.description }}
+        </p>
+      </div>
+    </div>
+
+    <form method="post" class="app-form delete-form">
+      {% csrf_token %}
+
+      <button class="danger-button" type="submit">
+        Удалить достижение
+      </button>
+
+      <a
+        class="secondary-button"
+        href="{% url 'dojo:coach_student_detail' student.id %}"
+      >
+        Отмена
+      </a>
+    </form>
+  </section>
+{% endblock %}

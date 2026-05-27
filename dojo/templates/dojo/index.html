@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="app-card">
+    <h1 class="app-title">Judo Skill</h1>
+    <p class="app-subtitle">
+      Игровой трекер прогресса для учеников дзюдо.
+    </p>
+
+    <a class="app-button" href="{% url 'accounts:login' %}">
+      Войти
+    </a>
+
+    <p class="small-text">
+      Очки, ранги, пояса, достижения и рейтинг группы.
+    </p>
+  </section>
+{% endblock %}

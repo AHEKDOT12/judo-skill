@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ group.name }} — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="screen-header">
+    <div>
+      <p class="eyebrow">Группа</p>
+      <h1 class="screen-title">
+        {{ group.name }}
+      </h1>
+    </div>
+
+    <a class="logout-link" href="{% url 'dojo:coach_dashboard' %}">
+      Назад
+    </a>
+  </section>
+
+  <section class="action-panel">
+    <a
+      class="app-button"
+      href="{% url 'dojo:student_create' group.id %}"
+    >
+      Добавить ученика
+    </a>
+  </section>
+
+  <section class="sort-panel">
+    <a
+      class="sort-button {% if active_sort == 'points' %}sort-button-active{% endif %}"
+      href="{% url 'dojo:coach_group_detail' group.id %}?sort=points"
+    >
+      По очкам
+    </a>
+
+    <a
+      class="sort-button {% if active_sort == 'name' %}sort-button-active{% endif %}"
+      href="{% url 'dojo:coach_group_detail' group.id %}?sort=name"
+    >
+      По алфавиту
+    </a>
+  </section>
+
+  <section class="card-list">
+    {% for item in students_with_rank %}
+      <a
+        class="student-card student-card-link"
+        href="{% url 'dojo:coach_student_detail' item.student.id %}"
+      >
+        <div class="student-main">
+          <div class="student-avatar">
+            {{ item.student.avatar_emoji }}
+          </div>
+
+          <div>
+            <h2 class="student-name">
+              {{ item.student.first_name }} {{ item.student.last_name }}
+            </h2>
+            <p class="student-meta">
+              {{ item.student.get_belt_display }} пояс · {{ item.rank_info.name }}
+            </p>
+          </div>
+        </div>
+
+        <div class="student-points">
+          {{ item.student.total_points }}
+          <span>очков</span>
+        </div>
+      </a>
+    {% empty %}
+      <article class="app-card">
+        <h2 class="section-title">Учеников пока нет</h2>
+        <p class="app-subtitle">
+          Добавь первого ученика в эту группу.
+        </p>
+      </article>
+    {% endfor %}
+  </section>
+{% endblock %}

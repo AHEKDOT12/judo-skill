@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Удалить ученика — Judo Skill
+{% endblock %}
+
+{% block content %}
+  <section class="screen-header">
+    <div>
+      <p class="eyebrow">Удаление ученика</p>
+      <h1 class="screen-title">
+        {{ student.first_name }} {{ student.last_name }}
+      </h1>
+    </div>
+
+    <a
+      class="logout-link"
+      href="{% url 'dojo:coach_student_detail' student.id %}"
+    >
+      Назад
+    </a>
+  </section>
+
+  <section class="app-card">
+    <h2 class="section-title">Точно удалить ученика?</h2>
+
+    <p class="app-subtitle">
+      Будет удалён аккаунт ученика, его профиль, начисления и достижения.
+      Это действие нельзя отменить.
+    </p>
+
+    <div class="delete-preview">
+      <p class="event-comment">
+        {{ student.first_name }} {{ student.last_name }}
+      </p>
+
+      <p class="event-date">
+        Группа: {{ group.name }}
+      </p>
+
+      <p class="event-date">
+        Очки: {{ student.total_points }}
+      </p>
+    </div>
+
+    <form method="post" class="app-form">
+      {% csrf_token %}
+
+      <button class="danger-button" type="submit">
+        Удалить ученика
+      </button>
+
+      <a
+        class="secondary-button"
+        href="{% url 'dojo:coach_student_detail' student.id %}"
+      >
+        Отмена
+      </a>
+    </form>
+  </section>
+{% endblock %}
