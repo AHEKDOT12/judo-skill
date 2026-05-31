@@ -143,9 +143,16 @@
             <h3 class="achievement-title">
               {{ student_achievement.achievement.title }}
             </h3>
-            <p class="achievement-description">
-              {{ student_achievement.achievement.description }}
-            </p>
+
+            {% if student_achievement.achievement.description %}
+              <p class="achievement-description">
+                {{ student_achievement.achievement.description }}
+              </p>
+            {% else %}
+              <p class="achievement-description">
+                Описание достижения пока не добавлено.
+              </p>
+            {% endif %}
 
             <a
               class="small-danger-link"
