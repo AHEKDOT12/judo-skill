@@ -6,17 +6,17 @@
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Демо
 
-🔗 **Demo:** https://judoskill.dpdns.org/
+🔗 **Сайт:** https://judoskill.dpdns.org/
 
 ---
 
-## 📌 Project Idea
+## 📌 Идея проекта
 
 В обычной спортивной секции прогресс учеников часто хранится в голове тренера, бумажных списках или таблицах.
 
-**Judo Skill** превращает этот процесс в понятную игровую систему:
+**Judo Skill** переводит этот процесс в понятную игровую систему:
 
 - тренер начисляет очки за тренировки, технику, дисциплину, соревнования и прогресс;
 - ученик видит свой ранг, место в группе, пояс, достижения и историю начислений;
@@ -26,9 +26,9 @@
 
 ---
 
-## ✨ Features
+## ✨ Возможности
 
-### 👨‍🏫 Coach
+### 👨‍🏫 Тренер
 
 Тренер может:
 
@@ -45,7 +45,7 @@
 - сортировать учеников по очкам или по имени;
 - видеть профиль каждого ученика.
 
-### 🧒 Student
+### 🧒 Ученик
 
 Ученик может:
 
@@ -62,86 +62,86 @@
 
 ---
 
-## 🏆 Rank System
+## 🏆 Система рангов
 
 Ранг считается автоматически на основе общего количества очков ученика.
 
-| Rank | Points |
+| Ранг | Очки |
 |---|---:|
-| 🥉 Bronze | 0–199 |
-| 🥈 Silver | 200–499 |
-| 🥇 Gold | 500–899 |
-| 💠 Platinum | 900–1399 |
-| 💎 Diamond | 1400–1999 |
-| 🧠 Master | 2000–2999 |
-| 👑 Legend | 3000+ |
+| 🥉 Бронза | 0–199 |
+| 🥈 Серебро | 200–499 |
+| 🥇 Золото | 500–899 |
+| 💠 Платина | 900–1399 |
+| 💎 Алмаз | 1400–1999 |
+| 🧠 Мастер | 2000–2999 |
+| 👑 Легенда | 3000+ |
 
 ---
 
-## 🎯 Points System
+## 🎯 Система очков
 
 Система очков рассчитана так, чтобы обычные тренировки давали стабильный небольшой прогресс, а соревнования, аттестации и серьёзные достижения давали заметный прирост.
 
-| Action | Points |
+| Действие | Очки |
 |---|---:|
-| Attended training | +5 |
-| Worked well during training | +10 |
-| Learned a basic technique | +15 |
-| Performed a technique well | +20 |
-| Used a technique in sparring | +35 |
-| Competition participation | +50 |
-| 3rd place in competition | +120 |
-| 2nd place in competition | +160 |
-| 1st place in competition | +220 |
-| Passed belt exam | +150 |
-| New belt | +200 |
-| Student of the month | +200 |
+| Пришёл на тренировку | +5 |
+| Хорошо работал на тренировке | +10 |
+| Освоил базовую технику | +15 |
+| Хорошо выполнил технику | +20 |
+| Применил приём в спарринге | +35 |
+| Участие в соревнованиях | +50 |
+| 3 место на соревнованиях | +120 |
+| 2 место на соревнованиях | +160 |
+| 1 место на соревнованиях | +220 |
+| Успешная аттестация | +150 |
+| Новый пояс | +200 |
+| Лучший ученик месяца | +200 |
 
 ---
 
-## 🎖️ Achievements
+## 🎖️ Достижения
 
-Achievements are created through Django Admin and awarded by the coach through the website.
+Достижения создаются через Django Admin и выдаются тренером через сайт.
 
-Each achievement has:
+У каждого достижения есть:
 
-- title;
-- description;
-- icon.
+- название;
+- описание;
+- значок.
 
-Examples:
+Примеры достижений:
 
-| Icon | Achievement |
+| Значок | Достижение |
 |---|---|
-| 🥋 | First Step |
-| 💪 | Strong Spirit |
-| 🔥 | Hard Worker |
-| 🎯 | Technique of the Day |
-| 😤 | Fighting Mood |
-| 🏋️ | Strongman |
-| 🤝 | Coach Assistant |
-| 🌟 | Example for the Group |
-| 🎟️ | First Tournament |
-| 🥇 | Tournament Champion |
-| 👑 | Student of the Month |
+| 🥋 | Первый шаг |
+| 💪 | Сильный духом |
+| 🔥 | Трудяга |
+| 🎯 | Техника дня |
+| 😤 | Боевой настрой |
+| 🏋️ | Силач |
+| 🤝 | Помощник тренера |
+| 🌟 | Пример для группы |
+| 🎟️ | Первый турнир |
+| 🥇 | Чемпион турнира |
+| 👑 | Лучший ученик месяца |
 
 ---
 
-## 👥 User Roles
+## 👥 Роли пользователей
 
-### Coach
+### Тренер
 
-The coach manages groups, students, points, achievements and passwords.
+Тренер управляет группами, учениками, очками, достижениями и паролями учеников.
 
-### Student
+### Ученик
 
-The student only has access to their own profile and group rating.
+Ученик имеет доступ только к своему личному кабинету и рейтингу своей группы.
 
-Role-based access protection is implemented: students cannot access coach pages.
+В проекте реализована защита страниц по ролям: ученик не может попасть в тренерские разделы.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Стек технологий
 
 - **Python 3.12**
 - **Django 6**
@@ -156,7 +156,7 @@ Role-based access protection is implemented: students cannot access coach pages.
 
 ---
 
-## 📁 Project Structure
+## 📁 Структура проекта
 
 ```text
 judo-skill/
@@ -189,149 +189,149 @@ judo-skill/
 
 ---
 
-## 🧩 Main Models
+## 🧩 Основные модели
 
 ### Profile
 
-Stores the user role:
+Хранит роль пользователя:
 
-- coach;
-- student.
+- тренер;
+- ученик.
 
 ### Group
 
-A student group owned by a specific coach.
+Группа учеников, которая принадлежит конкретному тренеру.
 
 ### Student
 
-Student profile:
+Профиль ученика:
 
-- user account;
-- group;
-- first name;
-- last name;
-- age;
-- belt;
-- total points;
-- emoji avatar.
+- аккаунт пользователя;
+- группа;
+- имя;
+- фамилия;
+- возраст;
+- пояс;
+- общее количество очков;
+- emoji-аватар.
 
 ### PointEvent
 
-Point history record:
+Запись истории начисления очков:
 
-- student;
-- coach;
-- points;
-- comment;
-- created date.
+- ученик;
+- тренер;
+- количество очков;
+- комментарий;
+- дата начисления.
 
 ### Achievement
 
-Achievement reference model:
+Справочник достижений:
 
-- title;
-- description;
-- icon.
+- название;
+- описание;
+- значок.
 
 ### StudentAchievement
 
-Connection between student and awarded achievement.
+Связь между учеником и выданным достижением.
 
 ---
 
-## 🔗 Main URLs
+## 🔗 Основные страницы
 
-### Common
+### Общие страницы
 
-| URL | Description |
+| URL | Назначение |
 |---|---|
-| `/` | Home page |
-| `/login/` | Login |
-| `/logout/` | Logout |
+| `/` | Главная страница |
+| `/login/` | Вход |
+| `/logout/` | Выход |
 | `/admin/` | Django Admin |
 
-### Coach
+### Страницы тренера
 
-| URL | Description |
+| URL | Назначение |
 |---|---|
-| `/coach/` | Coach dashboard |
-| `/coach/groups/create/` | Create group |
-| `/coach/groups/<id>/` | Group detail |
-| `/coach/groups/<id>/edit/` | Edit group |
-| `/coach/groups/<id>/delete/` | Delete group |
-| `/coach/groups/<id>/students/create/` | Add student |
-| `/coach/students/<id>/` | Student profile |
-| `/coach/students/<id>/edit/` | Edit student |
-| `/coach/students/<id>/password/` | Change student password |
-| `/coach/students/<id>/delete/` | Delete student |
-| `/coach/students/<id>/points/add/` | Add points |
-| `/coach/points/<id>/edit/` | Edit point event |
-| `/coach/points/<id>/delete/` | Delete point event |
-| `/coach/students/<id>/achievements/add/` | Award achievement |
+| `/coach/` | Панель тренера |
+| `/coach/groups/create/` | Создание группы |
+| `/coach/groups/<id>/` | Страница группы |
+| `/coach/groups/<id>/edit/` | Редактирование группы |
+| `/coach/groups/<id>/delete/` | Удаление группы |
+| `/coach/groups/<id>/students/create/` | Добавление ученика |
+| `/coach/students/<id>/` | Профиль ученика |
+| `/coach/students/<id>/edit/` | Редактирование ученика |
+| `/coach/students/<id>/password/` | Смена пароля ученику |
+| `/coach/students/<id>/delete/` | Удаление ученика |
+| `/coach/students/<id>/points/add/` | Начисление очков |
+| `/coach/points/<id>/edit/` | Редактирование начисления |
+| `/coach/points/<id>/delete/` | Удаление начисления |
+| `/coach/students/<id>/achievements/add/` | Выдача достижения |
 
-### Student
+### Страницы ученика
 
-| URL | Description |
+| URL | Назначение |
 |---|---|
-| `/student/me/` | Student dashboard |
-| `/student/avatar/` | Change emoji avatar |
+| `/student/me/` | Личный кабинет ученика |
+| `/student/avatar/` | Смена emoji-аватара |
 
 ---
 
-## 🚀 Local Installation
+## 🚀 Локальная установка
 
-Clone the repository:
+Клонировать репозиторий:
 
 ```bash
 git clone https://github.com/USERNAME/judo-skill.git
 cd judo-skill
 ```
 
-Create a virtual environment:
+Создать виртуальное окружение:
 
 ```bash
 python -m venv venv
 ```
 
-Activate it.
+Активировать окружение.
 
-For Windows Git Bash:
+Для Windows Git Bash:
 
 ```bash
 source venv/Scripts/activate
 ```
 
-For Linux/macOS:
+Для Linux/macOS:
 
 ```bash
 source venv/bin/activate
 ```
 
-Install dependencies:
+Установить зависимости:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Apply migrations:
+Применить миграции:
 
 ```bash
 python manage.py migrate
 ```
 
-Create a superuser:
+Создать суперпользователя:
 
 ```bash
 python manage.py createsuperuser
 ```
 
-Run the development server:
+Запустить сервер разработки:
 
 ```bash
 python manage.py runserver
 ```
 
-Open in browser:
+Открыть в браузере:
 
 ```text
 http://127.0.0.1:8000/
@@ -339,32 +339,32 @@ http://127.0.0.1:8000/
 
 ---
 
-## ⚙️ First Setup
+## ⚙️ Первичная настройка
 
-After creating a superuser, open Django Admin:
+После создания суперпользователя нужно открыть Django Admin:
 
 ```text
 http://127.0.0.1:8000/admin/
 ```
 
-Then:
+Дальше нужно:
 
-1. create a coach user;
-2. create a `Profile` with role `Coach`;
-3. create basic achievements.
+1. создать пользователя тренера;
+2. создать для него `Profile` с ролью `Тренер`;
+3. создать базовые достижения.
 
-After that, the coach can use the regular website interface.
+После этого тренер сможет пользоваться обычным интерфейсом сайта.
 
 ---
 
-## 🖥️ Deployment
+## 🖥️ Деплой
 
-The project is deployed on a Yandex Cloud virtual machine.
+Проект развёрнут на виртуальной машине Yandex Cloud.
 
-Production scheme:
+Рабочая схема:
 
 ```text
-Internet
+Интернет
 ↓
 Nginx
 ↓
@@ -375,19 +375,19 @@ Django
 SQLite
 ```
 
-Gunicorn runs as a `systemd` service:
+Gunicorn запущен как `systemd`-сервис:
 
 ```bash
 sudo systemctl status judo-skill
 ```
 
-Nginx works as a reverse proxy and serves static files.
+Nginx работает как reverse proxy и отдаёт статические файлы.
 
 ---
 
-## 🔄 Updating the Project on Server
+## 🔄 Обновление проекта на сервере
 
-Locally:
+Локально:
 
 ```bash
 git add .
@@ -395,7 +395,7 @@ git commit -m "Update project"
 git push
 ```
 
-On the server:
+На сервере:
 
 ```bash
 ssh user@server_ip
@@ -411,17 +411,17 @@ sudo systemctl restart nginx
 
 ---
 
-## 💾 Backups
+## 💾 Резервное копирование
 
-The project currently uses SQLite. The database is stored in one file:
+Проект сейчас использует SQLite. База данных хранится в одном файле:
 
 ```text
 db.sqlite3
 ```
 
-Daily automatic backups are configured through `cron`.
+На сервере настроены ежедневные автоматические бэкапы через `cron`.
 
-Backup script example:
+Пример скрипта бэкапа:
 
 ```bash
 #!/bin/bash
@@ -436,60 +436,60 @@ cp "$DB_PATH" "$BACKUP_DIR/db-$(date +%F-%H-%M).sqlite3"
 find "$BACKUP_DIR" -name "db-*.sqlite3" -type f -mtime +14 -delete
 ```
 
-Cron task:
+Cron-задача:
 
 ```bash
 0 3 * * * /home/user/backup_judo_db.sh
 ```
 
-This creates a database backup every day at 03:00 and removes backups older than 14 days.
+Она создаёт копию базы каждый день в 03:00 и удаляет бэкапы старше 14 дней.
 
 ---
 
-## ✅ Implemented
+## ✅ Что реализовано
 
-- user authentication;
-- coach and student roles;
-- role-based page protection;
-- group CRUD;
-- student CRUD;
-- password change for students by coach;
-- point assignment;
-- point editing;
-- point deletion;
-- automatic point recalculation;
-- rank system;
-- group rating;
-- sorting students by points and name;
-- achievements;
-- deleting awarded achievements;
-- student dashboard;
-- emoji avatar selection;
-- mobile-first UI;
-- production deployment;
+- авторизация пользователей;
+- роли тренера и ученика;
+- защита страниц по ролям;
+- создание, редактирование и удаление групп;
+- создание, редактирование и удаление учеников;
+- смена пароля ученику со стороны тренера;
+- начисление очков;
+- редактирование начислений;
+- удаление начислений;
+- автоматический пересчёт очков;
+- ранговая система;
+- рейтинг группы;
+- сортировка учеников по очкам и имени;
+- достижения;
+- удаление выданных достижений;
+- личный кабинет ученика;
+- выбор emoji-аватара;
+- мобильный интерфейс;
+- деплой на сервер;
 - HTTPS;
-- daily database backups.
+- ежедневные бэкапы базы данных.
 
 ---
 
-## 📈 Future Improvements
+## 📈 Возможные улучшения
 
-- PostgreSQL support;
-- full point history page;
-- “Show more” button for history;
-- filtering point events by date;
-- rating export to Excel;
-- student notifications;
-- multiple coaches;
-- parent access;
-- attendance statistics;
-- compressed photo avatars;
-- PWA mode for installing the website on a phone.
+- подключить PostgreSQL;
+- добавить страницу полной истории начислений;
+- добавить кнопку «Показать ещё» для истории;
+- добавить фильтр начислений по датам;
+- добавить экспорт рейтинга в Excel;
+- добавить уведомления ученикам;
+- добавить поддержку нескольких тренеров;
+- добавить родительский доступ;
+- добавить статистику посещаемости;
+- добавить загрузку фотографий с автоматическим сжатием;
+- добавить PWA-режим для установки сайта на телефон.
 
 ---
 
-## 📍 Project Status
+## 📍 Статус проекта
 
-The project is a working MVP.
+Проект находится на стадии рабочего MVP.
 
-The core functionality is ready and can be used by a coach in a real sports section.
+Основной функционал готов и уже используется тренером в реальной спортивной секции.
