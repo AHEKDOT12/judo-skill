@@ -1,5 +1,7 @@
 # Judo Skill
 
+🌐 Language: [English](README.en.md) | **Русский**
+
 **Judo Skill** — веб-приложение на Django для тренера по дзюдо, которое помогает вести прогресс учеников в игровом формате: очки, ранги, пояса, достижения, emoji-аватары, рейтинг группы и личные кабинеты учеников.
 
 Проект сделан как реальный MVP для спортивной секции. Тренер управляет группами и учениками через сайт, а ученики заходят в личный кабинет и отслеживают свой прогресс.
@@ -180,8 +182,7 @@ judo-skill/
 │   └── css/
 │       └── style.css
 ├── templates/
-│   ├── base.html
-│   └── includes/
+│   └── base.html
 ├── manage.py
 ├── requirements.txt
 └── README.md
@@ -268,6 +269,7 @@ judo-skill/
 | `/coach/points/<id>/edit/` | Редактирование начисления |
 | `/coach/points/<id>/delete/` | Удаление начисления |
 | `/coach/students/<id>/achievements/add/` | Выдача достижения |
+| `/coach/student-achievements/<id>/delete/` | Удаление достижения ученика |
 
 ### Страницы ученика
 
@@ -283,7 +285,7 @@ judo-skill/
 Клонировать репозиторий:
 
 ```bash
-git clone https://github.com/USERNAME/judo-skill.git
+git clone https://github.com/AHEKDOT12/judo-skill.git
 cd judo-skill
 ```
 
@@ -299,6 +301,12 @@ python -m venv venv
 
 ```bash
 source venv/Scripts/activate
+```
+
+Для Windows PowerShell:
+
+```powershell
+.\venv\Scripts\Activate.ps1
 ```
 
 Для Linux/macOS:
@@ -493,3 +501,4 @@ Cron-задача:
 Проект находится на стадии рабочего MVP.
 
 Основной функционал готов и уже используется тренером в реальной спортивной секции.
+
